@@ -1,0 +1,4 @@
+easy_admin:
+  design:
+    templates:
+      list: 'admin/my-dashboard.html.twig'
