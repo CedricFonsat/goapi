@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Card;
 use App\Entity\Category;
 use App\Entity\CollectionCard;
+use App\Entity\Thumbnail;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -39,5 +40,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Collections', 'fas fa-list', CollectionCard::class);
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Images', 'fas fa-list', Thumbnail::class);
     }
 }

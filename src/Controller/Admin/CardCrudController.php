@@ -6,8 +6,10 @@ use App\Entity\Card;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CardCrudController extends AbstractCrudController
 {
@@ -25,7 +27,7 @@ class CardCrudController extends AbstractCrudController
             NumberField::new('price'),
             BooleanField::new('if_available'),
             TextField::new('image'),
-            AssociationField::new('collection')
+            AssociationField::new('collection'),
         ];
     }
 

@@ -12,6 +12,7 @@ use App\Controller\Api\Card\BuyCardController;
 use App\Repository\CardRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: CardRepository::class)]
 #[ApiResource(
@@ -27,6 +28,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
     ]
 )]
+#[ORM\HasLifecycleCallbacks]
 class Card
 {
     #[ORM\Id]
@@ -57,8 +59,14 @@ class Card
     #[ORM\ManyToOne(inversedBy: 'cards')]
     private ?User $user = null;
 
-    #[ORM\Column]
-    private ?string $brochureFilename = null;
+    #[ORM\OneToOne(inversedBy: 'card', targetEntity: Thumbnail::class, cascade: ['persist', 'remove'])]
+    private ?Thumbnail $thumbnail = null;
+
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {
@@ -137,16 +145,18 @@ class Card
         return $this;
     }
 
-    public function getBrochureFilename(): string
+    public function getThumbnail(): ?Thumbnail
     {
-        return $this->brochureFilename;
+        return $this->thumbnail;
     }
 
-    public function setBrochureFilename(string $brochureFilename): self
+    public function setThumbnail(?Thumbnail $thumbnail): self
     {
-        $this->brochureFilename = $brochureFilename;
+        $this->thumbnail = $thumbnail;
 
         return $this;
     }
+
+
 
 }
