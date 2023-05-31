@@ -57,6 +57,9 @@ class Card
     #[ORM\ManyToOne(inversedBy: 'cards')]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?string $brochureFilename = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,6 +133,18 @@ class Card
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBrochureFilename(): string
+    {
+        return $this->brochureFilename;
+    }
+
+    public function setBrochureFilename(string $brochureFilename): self
+    {
+        $this->brochureFilename = $brochureFilename;
 
         return $this;
     }
