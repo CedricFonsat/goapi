@@ -59,9 +59,6 @@ class Card
     #[ORM\ManyToOne(inversedBy: 'cards')]
     private ?User $user = null;
 
-    #[ORM\OneToOne(inversedBy: 'card', targetEntity: Thumbnail::class, cascade: ['persist', 'remove'])]
-    private ?Thumbnail $thumbnail = null;
-
 
     public function __toString()
     {
@@ -141,18 +138,6 @@ class Card
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getThumbnail(): ?Thumbnail
-    {
-        return $this->thumbnail;
-    }
-
-    public function setThumbnail(?Thumbnail $thumbnail): self
-    {
-        $this->thumbnail = $thumbnail;
 
         return $this;
     }

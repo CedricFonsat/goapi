@@ -16,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\False_;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
+//use Vich\UploaderBundle\Entity\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CollectionCardRepository::class)]
